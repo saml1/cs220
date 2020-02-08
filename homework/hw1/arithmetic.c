@@ -38,7 +38,7 @@ int main() {
 
     }*/
   
-  while(scanf(" %c %f", &operator, &addend) == 2 && isvalid == 1){
+  while(isvalid == 1 && scanf(" %c %f", &operator, &addend) == 2){
     whileloop = 1;
     //printf(" %c %f ok\n", operator, addend);
     if(operator == '*'){
@@ -84,13 +84,15 @@ int main() {
     isvalid = 0;
 
   }
+
   
-  /*if(scanf(" %c", &operator) == 1){
+  
+  if(scanf(" %c", &operator) == 1 && whileloop == 1){
 
     isvalid = 0;
     printf("malformed expression\n");
 
-    }*/
+    }
   
   if(isvalid == 1){
 
