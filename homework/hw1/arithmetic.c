@@ -28,6 +28,7 @@ int main() {
 
     printf("malformed expression\n");
     isvalid = 0;
+    return 1;
 
   }
 
@@ -49,6 +50,7 @@ int main() {
 
 	printf("division by zero\n");
 	isvalid = 0;
+	return 2;
 
       }else {
 
@@ -60,6 +62,7 @@ int main() {
 
       printf("malformed expression\n");
       isvalid = 0;
+      return 1;
       
     }
 
@@ -77,6 +80,7 @@ int main() {
 
     printf("malformed expression\n");
     isvalid = 0;
+    return 1;
 
   }
 
@@ -86,6 +90,7 @@ int main() {
 
     isvalid = 0;
     printf("malformed expression\n");
+    return 1;
 
     }
   
