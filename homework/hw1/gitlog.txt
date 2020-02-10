@@ -1,0 +1,59 @@
+commit fa9815dceef61a71545c38bd84fdc542e7e4ec7b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 10 14:51:33 2020 -0500
+
+    added correct return values
+
+commit 6ee3c08a44befe222c79178f0ff42f9307af6e73
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 10 14:28:58 2020 -0500
+
+    completed ex 3-1
+
+commit e339db6922b0ca71e9acc9c82565dc4e50eb0c20
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 12:09:56 2020 -0500
+
+    think everything's working- double check later
+
+commit bee12b23e4a056dd7d63614354d6ad03b173ca7b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 12:01:27 2020 -0500
+
+    fixed 2*2**
+
+commit a73cd76dd97e9f73f5925d4ce36db3c9e6234c66
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 11:47:47 2020 -0500
+
+    math works but doesn't terminate on its own and doesn't register 2*2*2** etc as invalid
+
+commit 6f95390dbda8b6c8adddc2afcb2b50b99907c674
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Feb 7 14:29:53 2020 -0500
+
+    completed ex2-2
+
+commit a50e1d11e64053efbec478d37ed523a8225b2af6
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Wed Feb 5 15:39:32 2020 -0500
+
+    ex2-1 gpa working version
+
+commit ac7cd13183085d1b774ad0c06e6d83d2e97f5150
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 1 14:38:17 2020 -0500
+
+    Part 1 of hw0
+
+commit 216ed44fb14689acfc8524971bb05d035a6ca8e6
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Jan 31 13:10:30 2020 -0500
+
+    updated README
+
+commit d24bf7b9569f8da2f1adb0dab02e420aaaebfae0
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Jan 31 13:07:54 2020 -0500
+
+    created README
