@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include "funs.h"
+
+int main(){
+
+  printf("%d", -2);
+
+}
