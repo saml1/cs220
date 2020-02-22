@@ -17,7 +17,7 @@ int isvalid_text(char* filename){
   char tp = 0;
   int count = 0;
   int parse = fscanf(input, "%c", &tp);
-  //printf("%c\n", tp);
+  
   if(!isspace(tp)){
     count = parse;
   }
@@ -26,6 +26,7 @@ int isvalid_text(char* filename){
   }
   
   if(!isspace(tp) && tp != 'A' && tp!= 'C' && tp!= 'G' && tp!= 'T'){
+    fclose(input);
     return 1;
   }
 
@@ -38,14 +39,16 @@ int isvalid_text(char* filename){
       tp = toupper(tp);
     }
     if(!isspace(tp) && tp != 'A' && tp!= 'C' && tp!= 'G' && tp!= 'T'){
+      fclose(input);
       return 1;
     }
   }
 
-  //printf("%d/n", count);
   if((count == 0) || count > 15000){
+    fclose(input);
     return 1;
   }
+  fclose(input);
   return 0;
 
   
@@ -56,10 +59,13 @@ int isvalid_pattern(char pattern[], int length){
     return 1;
   }
   for(int i = 0; i < (int)strlen(pattern); i++){
-    //pattern[i] = toupper(pattern[i]);
     if(toupper(pattern[i]) != 'A' && toupper(pattern[i]) != 'C' && toupper(pattern[i]) != 'G' && toupper(pattern[i]) != 'T'){
       return 1;
     }
   }
   return 0;
 }
+
+/*char[] scan_pattern(){
+  char
+  }*/
