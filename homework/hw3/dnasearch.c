@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
 
 int isvalid_text(char* filename){
   FILE* input = fopen(filename, "r");
@@ -66,6 +67,35 @@ int isvalid_pattern(char pattern[], int length){
   return 0;
 }
 
-/*char[] scan_pattern(){
-  char
-  }*/
+char* scan_pattern(){
+  char temp;
+  char* pattern;
+  int size = 0;
+  //pattern = malloc(sizeof(char)
+  //int run = scanf("%c", &temp);
+  while(scanf("%c", &temp) == 1 && !isspace(temp)){
+    size++;
+    //printf("q");
+    if(size == 1){
+      pattern = calloc(1, sizeof(char));
+    }else{
+      pattern = realloc(pattern, sizeof(char)*size);
+    }
+    pattern[size-1]=temp;
+    
+    //TODO: dynamically allocate with each char
+  }
+  pattern = realloc(pattern, sizeof(char)*size+1);
+  pattern[size] = '\0';
+  return pattern;
+  
+  /*char* pattern = malloc(sizeof(char)*strlen(temp));
+  if(pattern == null){
+    printf("Could not allocate fresh memory\n");
+    return NULL;
+  }
+  for(int i = 0; i < strlen(temp); i++){
+    pattern[i] = temp[i];
+    }*/
+  
+}
