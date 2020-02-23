@@ -71,11 +71,10 @@ char* scan_pattern(){
   char temp;
   char* pattern;
   int size = 0;
-  //pattern = malloc(sizeof(char)
-  //int run = scanf("%c", &temp);
+  
   while(scanf("%c", &temp) == 1 && !isspace(temp)){
     size++;
-    //printf("q");
+    
     if(size == 1){
       pattern = calloc(1, sizeof(char));
     }else{
@@ -83,19 +82,35 @@ char* scan_pattern(){
     }
     pattern[size-1]=temp;
     
-    //TODO: dynamically allocate with each char
   }
   pattern = realloc(pattern, sizeof(char)*size+1);
   pattern[size] = '\0';
   return pattern;
   
-  /*char* pattern = malloc(sizeof(char)*strlen(temp));
-  if(pattern == null){
-    printf("Could not allocate fresh memory\n");
-    return NULL;
+}
+
+int* find_matches(char pattern[], char text[]){
+  int num_matches = 0;
+  int n = (int)strlen(pattern);
+  int m = (int)strlen(text);
+  int* locs;
+  for(int i = 0; i < m-n; i++){
+    int match = 0;
+    for(int j = 0; j < n; j++){
+      if(pattern[j] != text[i+j]){
+	match = 1;
+	break;
+      }
+    }
+    if(match == 0){
+      num_matches++;
+      if(num_matches == 1){
+        locs = malloc(sizeof(int));
+      }else{
+	locs = realloc(locs, sizeof(int)*num_matches);
+      }
+      locs[num_matches-1] = i;
+    }
   }
-  for(int i = 0; i < strlen(temp); i++){
-    pattern[i] = temp[i];
-    }*/
-  
+  return locs;
 }

@@ -22,15 +22,31 @@ int main(){
   assert(isvalid_pattern("bgTc", 134) != 0);
 
   char* pattern = scan_pattern();
-  //printf("%lu", strlen(pattern));
-  //printf("%c\n", *pattern);
   assert(pattern[0]=='a');//assuming user types in abc
   assert(pattern[1]=='b');//assuming user types in abc
   assert(pattern[2]=='c');//assuming user types in abc
   assert(pattern[3]=='\0');//assuming user types in abc 
   assert(strlen(pattern)==3);//assuming user types in abc
-  //printf("%s", pattern);
   free(pattern);
   printf("All tests passed!\n");
+  
+  FILE* input = fopen("test.txt", "r");
+  char text[15001];
+  char temp = 0;
+  int parse = fscanf(input, "%c", &temp);
+  int count = 0;
+  while(parse == 1){
+    if(!isspace(temp)){
+      text[count] = temp;
+      count++;
+    }
+    parse = fscanf(input, "%c", &temp);
+  }
+  text[count] = '\0';
+  fclose(input);
+  int* matches = find_matches("ctg", text);
+  assert(matches[0] == 4 && matches[1] == 14);
+  free(matches);
+  
   return 0;
 }
