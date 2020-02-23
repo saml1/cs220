@@ -2,17 +2,14 @@
 //slipsch3
 
 #include "dnasearch.h"
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
+
 
 int isvalid_text(char* filename){
   FILE* input = fopen(filename, "r");
 
   if(input == NULL){
     printf("Error: could not open file\n");
-    return 1;
+    return 2;
   }
 
   char tp = 0;
@@ -112,5 +109,7 @@ int* find_matches(char pattern[], char text[]){
       locs[num_matches-1] = i;
     }
   }
+  locs = realloc(locs, sizeof(int)*(num_matches+1));
+  locs[num_matches]=-1;
   return locs;
 }
