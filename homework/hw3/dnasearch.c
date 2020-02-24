@@ -109,7 +109,7 @@ int* find_matches(char pattern[], char text[]){
       locs[num_matches-1] = i;
     }
   }
-  locs = realloc(locs, sizeof(int)*(num_matches+1));
-  locs[num_matches]=-1;
+  //locs = realloc(locs, sizeof(int)*(num_matches+1));
+  //locs[num_matches]=-1;
   return locs;
 }
