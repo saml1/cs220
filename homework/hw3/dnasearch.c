@@ -90,16 +90,22 @@ int* find_matches(char pattern[], char text[]){
   int num_matches = 0;
   int n = (int)strlen(pattern);
   int m = (int)strlen(text);
+  //printf("%d %d\n", n, m);
   int* locs;
   for(int i = 0; i < m-n; i++){
     int match = 0;
     for(int j = 0; j < n; j++){
-      if(pattern[j] != text[i+j]){
+      if(toupper(pattern[j]) != text[i+j]){
+	//printf("got here\n");
 	match = 1;
+	//printf("%c %c\n", pattern[j], text[i+j]);
 	break;
       }
+      
     }
+    //printf("got here\n");
     if(match == 0){
+      printf("got herematch == 0\n");
       num_matches++;
       if(num_matches == 1){
         locs = malloc(sizeof(int));
@@ -107,7 +113,7 @@ int* find_matches(char pattern[], char text[]){
 	locs = realloc(locs, sizeof(int)*num_matches);
       }
       locs[num_matches-1] = i;
-    }
+      }
   }
   //locs = realloc(locs, sizeof(int)*(num_matches+1));
   //locs[num_matches]=-1;
