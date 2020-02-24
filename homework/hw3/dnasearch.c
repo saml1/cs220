@@ -53,6 +53,7 @@ int isvalid_text(char* filename){
 }
 
 int isvalid_pattern(char pattern[], int length){
+  //printf("in isvalid_pattern\n");
   if((int)strlen(pattern) > length){
     return 1;
   }
@@ -68,8 +69,14 @@ char* scan_pattern(){
   char temp;
   char* pattern;
   int size = 0;
-  
-  while(scanf("%c", &temp) == 1 && !isspace(temp)){
+
+  if(scanf("%c", &temp) == 1){
+    while(isspace(temp)){
+      scanf("%c", &temp);
+    }
+  }
+  do{
+    
     size++;
     
     if(size == 1){
@@ -79,15 +86,22 @@ char* scan_pattern(){
     }
     pattern[size-1]=temp;
     
-  }
+  }while(scanf("%c", &temp) == 1 && !isspace(temp));
   //printf("%d\n", size);
   // if(pattern!=NULL){printf("notnull\n");}
-  if(!feof(stdin)){
+  //printf("%d\n", size);
+  if(!feof(stdin) && size > 0){
     pattern = realloc(pattern, sizeof(char)*size+1);
     pattern[size] = '\0';
     //printf("not eof\n");
+    //printf("%lu size\n", sizeof(pattern));
     return pattern;
-  }
+    }
+  //if(size == 0){
+    //printf("recursive\n");
+    //scan_pattern();
+    // }
+  //printf("%lu size\n", sizeof(pattern));
   return NULL;
   
 }
