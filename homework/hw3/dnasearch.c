@@ -86,7 +86,7 @@ char* scan_pattern(){
   
 }
 
-int* find_matches(char pattern[], char text[]){
+/*int* find_matches(char pattern[], char text[]){
   int num_matches = 0;
   int n = (int)strlen(pattern);
   int m = (int)strlen(text);
@@ -118,4 +118,34 @@ int* find_matches(char pattern[], char text[]){
   //locs = realloc(locs, sizeof(int)*(num_matches+1));
   //locs[num_matches]=-1;
   return locs;
+  }*/
+
+int pattern_match(const char t[], int tlen, const char p[], int plen, int start_at){
+  //printf("%d\n", tlen);
+  //printf("%d\n", plen);
+  for(int i = start_at; i < tlen-plen; i++){
+    int match = 0;
+    for(int j = 0; j < plen; j++){
+      if(toupper(p[j]) != toupper(t[i+j])){
+	  match = 1;
+	  break;
+	}
+    }
+    //printf("here\n");
+    if(match == 0) {
+      //printf("%d\n", start_at);
+      return i;
+    }
+  }
+  /*if((match == 0) && i >= start_at) {
+      return i;
+      }*/
+  /*for(int i = 0; i < tlen; i++){
+    //printf("%c", t[i]);
+  }
+  for(int i = 0; i < plen; i++){
+    //printf("%c", p[i]);
+    }*/
+      
+  return -1;
 }

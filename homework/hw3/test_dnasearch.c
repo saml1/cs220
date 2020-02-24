@@ -44,9 +44,28 @@ int main(){
   }
   text[count] = '\0';
   fclose(input);
-  int* matches = find_matches("ctg", text);
-  assert(matches[0] == 4 && matches[1] == 14);
-  free(matches);
-  
+  pattern=scan_pattern();
+  char pattern_arr[15001];
+  int i = 0;
+  do{
+    pattern_arr[i] = pattern[i];
+    i++;
+  }while(pattern[i] != '\0');
+  pattern_arr[i]='\0';
+  //int* matches = find_matches(pattern, text);
+  //assert(matches[0] == 4 && matches[1] == 14);
+  //free(matches);
+  //matches = find_matches("CTG\0", text);
+  //assert(matches[0] == 4 && matches[1] == 14);
+  //free(matches);
+  free(pattern);
+  /*printf("%d\n", (int)strlen(text));
+    printf("%d\n", (int)strlen(pattern_arr));*/
+  int plen = (int)strlen(pattern_arr);
+  int tlen = (int)strlen(text);
+  /*int match = pattern_match(text, tlen, pattern_arr, plen, 5);
+    printf("%d\n", match);*/
+  assert(pattern_match(text, tlen, pattern_arr, plen, 5)==14);//assuming pattern is ctg
+  assert(pattern_match(text, tlen, pattern_arr, plen, 0) == 4);//assuming pattern is ctg
   return 0;
 }

@@ -11,4 +11,6 @@ int isvalid_pattern(char pattern[], int length);
 
 char* scan_pattern();
 
-int* find_matches(char pattern[], char text[]);
+//int* find_matches(char pattern[], char text[]);
+
+int pattern_match(const char t[], int tlen, const char p[], int plen, int start_at);
