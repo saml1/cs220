@@ -80,9 +80,15 @@ char* scan_pattern(){
     pattern[size-1]=temp;
     
   }
-  pattern = realloc(pattern, sizeof(char)*size+1);
-  pattern[size] = '\0';
-  return pattern;
+  //printf("%d\n", size);
+  // if(pattern!=NULL){printf("notnull\n");}
+  if(!feof(stdin)){
+    pattern = realloc(pattern, sizeof(char)*size+1);
+    pattern[size] = '\0';
+    //printf("not eof\n");
+    return pattern;
+  }
+  return NULL;
   
 }
 

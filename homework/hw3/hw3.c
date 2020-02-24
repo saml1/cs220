@@ -30,43 +30,58 @@ int main(int argc, char *argv[]){
   }
   text[count] = '\0';
   fclose(input);
-  
+
   char* pattern = scan_pattern();
-  //printf("%c", pattern[0]);
-  //printf("%c", pattern[1]);
-  //printf("%c", pattern[2]);
-  /*if(pattern[2]== '\0'){
-    printf("yup/n");
-  }*/
-  int j = 0;
-  int pattern_length = 0;
-  while(pattern[j] != '\0'){
-    pattern_length++;
-    j++;
-    printf("%d\n", pattern_length);
-  }
-  char pattern_string[pattern_length];
-  for(int k= 0; k < pattern_length+1; k++){
-    pattern_string[k] = pattern[k];
-  }
-  while(pattern != NULL){
-    if(isvalid_pattern(pattern_string, strlen(text)) == 0){
-      int* matches = find_matches(pattern_string, text);
-      printf("%s ", pattern);
-      int i = 0;
-      /*while(matches[i] >= 0){
-	printf("%d ", matches[i]);
-	i++;
-	}*/
-      printf("%d\n", matches[0]);
-      pattern = scan_pattern();
-    }else{
-      free(pattern);
-      //free(matches);
-      printf("Invalid pattern\n");
-      return 4;
+  char pattern_arr[15001];
+  int i = 0;
+  do{
+    pattern_arr[i] = toupper(pattern[i]);
+    i++;
+  }while(pattern[i] != '\0');
+  pattern_arr[i]='\0';
+  int plen = (int)strlen(pattern_arr);
+  int tlen = (int)strlen(text);
+  //printf("%d\n", plen);
+  //printf("%d\n", isvalid_pattern(pattern_arr, plen));
+  //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
+  while(pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
+    printf("%s ", pattern_arr);
+    int loc = 0;
+    int foundmatch = 0;
+    for(int j = 0; j < tlen-plen; j++){
+      if(pattern_match(text, tlen, pattern_arr, plen, j) != loc && pattern_match(text, tlen, pattern_arr, plen, j) >=0){
+	//printf("%d\n", loc);
+	printf("%d ", pattern_match(text, tlen, pattern_arr, plen, j));
+	loc = pattern_match(text, tlen, pattern_arr, plen, j);
+	foundmatch = 1;
+      }
     }
+    if(foundmatch == 0){
+      printf("Not found");
+    }
+    printf("\n");
+    //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
+    //printf("%c pat0\n", pattern[0]);
+    free(pattern);
+    //printf("ss\n");
+    pattern = scan_pattern();
+    if(pattern != NULL){
+      i=0;
+      do{
+	//printf("%d is I\n", i);
+	pattern_arr[i] = toupper(pattern[i]);
+	i++;
+      }while(pattern[i] != '\0');
+      pattern_arr[i]='\0';
+      plen = (int)strlen(pattern_arr);
+      tlen = (int)strlen(text);
+    }
+    
   }
+  
+  /*int* matches = find_matches(pattern, text);
+  printf("%d\n", matches[0]);
+  printf("%d\n", matches[1]);*/
   free(pattern);
   //free(matches);
   return 0;
