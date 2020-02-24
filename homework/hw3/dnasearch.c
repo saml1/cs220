@@ -95,7 +95,7 @@ int* find_matches(char pattern[], char text[]){
   for(int i = 0; i < m-n; i++){
     int match = 0;
     for(int j = 0; j < n; j++){
-      if(toupper(pattern[j]) != text[i+j]){
+      if(toupper(pattern[j]) != toupper(text[i+j])){
 	//printf("got here\n");
 	match = 1;
 	//printf("%c %c\n", pattern[j], text[i+j]);
