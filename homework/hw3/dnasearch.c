@@ -69,11 +69,19 @@ char* scan_pattern(){
   char temp;
   char* pattern;
   int size = 0;
-
+  int a = 0;
   if(scanf("%c", &temp) == 1){
+    a = 1;
     while(isspace(temp)){
       scanf("%c", &temp);
     }
+  }
+  if(a == 0){
+    //printf("end\n");
+    pattern = malloc(sizeof(char)*2);
+    pattern[0] = (char)32;
+    pattern[1] = '\0';
+    return pattern;
   }
   do{
     
@@ -90,7 +98,7 @@ char* scan_pattern(){
   //printf("%d\n", size);
   // if(pattern!=NULL){printf("notnull\n");}
   //printf("%d\n", size);
-  if(!feof(stdin) && size > 0){
+  if(size > 0){
     pattern = realloc(pattern, sizeof(char)*size+1);
     pattern[size] = '\0';
     //printf("not eof\n");
@@ -102,6 +110,7 @@ char* scan_pattern(){
     //scan_pattern();
     // }
   //printf("%lu size\n", sizeof(pattern));
+  
   return NULL;
   
 }

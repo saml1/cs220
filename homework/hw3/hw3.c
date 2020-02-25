@@ -28,10 +28,10 @@ int main(int argc, char *argv[]){
     }
     parse = fscanf(input, "%c", &temp);
   }
-  for(int z = 0; z < 10; z++){
+  /*for(int z = 0; z < 16; z++){
     printf("%c ", text[z]);
-  }
-  printf("\n");
+    }*/
+  //printf("\n");
   text[count] = '\0';
   fclose(input);
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]){
   int plen = (int)strlen(pattern_arr);
   int tlen = (int)strlen(text);
   //printf("%d\n", plen);
-  printf("%s\n", pattern_arr);
+  //printf("%s\n", pattern_arr);
   //printf("%d\n", isvalid_pattern(pattern_arr, plen));
   //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
   if(isvalid_pattern(pattern_arr, plen) != 0){
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
     free(pattern);
     return 4;
   }
-  while(pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
+  while(pattern[0] != (char)32 && pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
     printf("%s ", pattern_arr);
     int loc = -1;
     int foundmatch = 0;
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
     free(pattern);
     //printf("ss\n");
     pattern = scan_pattern();
-    if(pattern != NULL){
+    if(pattern != NULL && pattern_arr[0] != (char)32){
       i=0;
       do{
 	//printf("%d is I\n", i);
@@ -86,13 +86,13 @@ int main(int argc, char *argv[]){
       pattern_arr[i]='\0';
       plen = (int)strlen(pattern_arr);
       tlen = (int)strlen(text);
-      if(isvalid_pattern(pattern_arr, plen) != 0){
+      if(isvalid_pattern(pattern_arr, plen) != 0 && pattern_arr[0] != (char)32){
 	printf("Invalid pattern\n");
 	free(pattern);
 	return 4;
       }
     }
-    
+    //free(pattern);
   }
   
   /*int* matches = find_matches(pattern, text);
