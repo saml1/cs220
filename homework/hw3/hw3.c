@@ -28,6 +28,10 @@ int main(int argc, char *argv[]){
     }
     parse = fscanf(input, "%c", &temp);
   }
+  for(int z = 0; z < 10; z++){
+    printf("%c ", text[z]);
+  }
+  printf("\n");
   text[count] = '\0';
   fclose(input);
 
@@ -42,6 +46,7 @@ int main(int argc, char *argv[]){
   int plen = (int)strlen(pattern_arr);
   int tlen = (int)strlen(text);
   //printf("%d\n", plen);
+  printf("%s\n", pattern_arr);
   //printf("%d\n", isvalid_pattern(pattern_arr, plen));
   //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
   if(isvalid_pattern(pattern_arr, plen) != 0){
@@ -51,9 +56,10 @@ int main(int argc, char *argv[]){
   }
   while(pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
     printf("%s ", pattern_arr);
-    int loc = 0;
+    int loc = -1;
     int foundmatch = 0;
     for(int j = 0; j < tlen-plen; j++){
+      
       if(pattern_match(text, tlen, pattern_arr, plen, j) != loc && pattern_match(text, tlen, pattern_arr, plen, j) >=0){
 	//printf("%d\n", loc);
 	printf("%d ", pattern_match(text, tlen, pattern_arr, plen, j));
