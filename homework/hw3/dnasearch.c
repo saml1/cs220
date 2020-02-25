@@ -143,7 +143,7 @@ char* scan_pattern(){
 int pattern_match(const char t[], int tlen, const char p[], int plen, int start_at){
   //printf("%d\n", tlen);
   //printf("%d\n", plen);
-  for(int i = start_at; i < tlen-plen; i++){
+  for(int i = start_at; i < tlen-plen+1; i++){
     int match = 0;
     for(int j = 0; j < plen; j++){
       if(toupper(p[j]) != toupper(t[i+j])){
