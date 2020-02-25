@@ -46,6 +46,7 @@ int main(int argc, char *argv[]){
   //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
   if(isvalid_pattern(pattern_arr, plen) != 0){
     printf("Invalid pattern\n");
+    free(pattern);
     return 4;
   }
   while(pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
@@ -81,6 +82,7 @@ int main(int argc, char *argv[]){
       tlen = (int)strlen(text);
       if(isvalid_pattern(pattern_arr, plen) != 0){
 	printf("Invalid pattern\n");
+	free(pattern);
 	return 4;
       }
     }
