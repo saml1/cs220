@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
   //printf("%s\n", pattern_arr);
   //printf("%d\n", isvalid_pattern(pattern_arr, plen));
   //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
-  if(isvalid_pattern(pattern_arr, plen) != 0){
+  if(isvalid_pattern(pattern_arr, plen) != 0 && pattern[0] != (char)32){
     printf("Invalid pattern\n");
     free(pattern);
     return 4;
