@@ -8,8 +8,11 @@ CFLAGS = $(CONSERVATIVE_FLAGS) $(DEBUGGING_FLAGS)
 
 
 # TODO: Add a target to create the hw3 executable here
-main: hw3.o dnasearch.o
+hw3: hw3.o dnasearch.o
 	$(CC) -o hw3 hw3.o dnasearch.o
+
+hw3.o: hw3.c dnasearch.h
+	$(CC) $(CFLAGS) -c hw3.c
 
 
 # Links the test_dnasearch executable
