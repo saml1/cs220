@@ -7,7 +7,6 @@ DEBUGGING_FLAGS = -g -O0
 CFLAGS = $(CONSERVATIVE_FLAGS) $(DEBUGGING_FLAGS)
 
 
-# TODO: Add a target to create the hw3 executable here
 hw3: hw3.o dnasearch.o
 	$(CC) -o hw3 hw3.o dnasearch.o
 
