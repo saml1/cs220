@@ -21,47 +21,43 @@ int main(int argc, char *argv[]){
   char temp = 0;
   int parse = fscanf(input, "%c", &temp);
   int count = 0;
-  while(parse == 1){
+  while(parse == 1){//copying data from text file to text
     if(!isspace(temp)){
       text[count] = toupper(temp);
       count++;
     }
     parse = fscanf(input, "%c", &temp);
   }
-  /*for(int z = 0; z < 16; z++){
-    printf("%c ", text[z]);
-    }*/
-  //printf("\n");
-  text[count] = '\0';
+  
+  text[count] = '\0'; //adding null terminator to end of text
   fclose(input);
 
   char* pattern = scan_pattern();
   char pattern_arr[15001];
   int i = 0;
-  do{
+  do{//converting pointer from scan_pattern to a pattern_arr[]
     pattern_arr[i] = toupper(pattern[i]);
     i++;
   }while(pattern[i] != '\0');
   pattern_arr[i]='\0';
   int plen = (int)strlen(pattern_arr);
   int tlen = (int)strlen(text);
-  //printf("%d\n", plen);
-  //printf("%s\n", pattern_arr);
-  //printf("%d\n", isvalid_pattern(pattern_arr, plen));
-  //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
+
+  //if the pattern is invalid and it's not from user entering ctrl-d
   if(isvalid_pattern(pattern_arr, plen) != 0 && pattern[0] != (char)32){
     printf("Invalid pattern\n");
     free(pattern);
     return 4;
   }
+
+  //repeat process as long as pattern is valid/not from ctrl-d
   while(pattern[0] != (char)32 && pattern != NULL && isvalid_pattern(pattern_arr, plen)==0){
     printf("%s ", pattern_arr);
     int loc = -1;
     int foundmatch = 0;
     for(int j = 0; j < tlen-plen; j++){
       
-      if(pattern_match(text, tlen, pattern_arr, plen, j) != loc && pattern_match(text, tlen, pattern_arr, plen, j) >=0){
-	//printf("%d\n", loc);
+      if(pattern_match(text, tlen, pattern_arr, plen, j) != loc && pattern_match(text, tlen, pattern_arr, plen, j) >=0){//will print match locationif it's after previous match location 
 	printf("%d ", pattern_match(text, tlen, pattern_arr, plen, j));
 	loc = pattern_match(text, tlen, pattern_arr, plen, j);
 	foundmatch = 1;
@@ -71,15 +67,13 @@ int main(int argc, char *argv[]){
       printf("Not found");
     }
     printf("\n");
-    //printf("%d\n", pattern_match(text, tlen, pattern_arr, plen, 0));
-    //printf("%c pat0\n", pattern[0]);
     free(pattern);
-    //printf("ss\n");
-    pattern = scan_pattern();
+    
+    pattern = scan_pattern();//repeats process of converting pointer from scan_pattern to pattern_arr
     if(pattern != NULL && pattern_arr[0] != (char)32){
       i=0;
       do{
-	//printf("%d is I\n", i);
+	
 	pattern_arr[i] = toupper(pattern[i]);
 	i++;
       }while(pattern[i] != '\0');
@@ -92,13 +86,9 @@ int main(int argc, char *argv[]){
 	return 4;
       }
     }
-    //free(pattern);
+    
   }
   
-  /*int* matches = find_matches(pattern, text);
-  printf("%d\n", matches[0]);
-  printf("%d\n", matches[1]);*/
   free(pattern);
-  //free(matches);
   return 0;
 }

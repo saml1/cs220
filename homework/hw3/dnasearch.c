@@ -12,25 +12,26 @@ int isvalid_text(char* filename){
     return 2;
   }
 
-  char tp = 0;
-  int count = 0;
+  char tp = 0;//char to take scanf's chars
+  int count = 0;//total number of chars
   int parse = fscanf(input, "%c", &tp);
   
-  if(!isspace(tp)){
+  if(!isspace(tp)){//doesn't include whitespaces
     count = parse;
   }
-  if(!isupper(tp)){
+  if(!isupper(tp)){//makes everything uppercase
     tp = toupper(tp);
   }
-  
+
+  //checks for invalid chars
   if(!isspace(tp) && tp != 'A' && tp!= 'C' && tp!= 'G' && tp!= 'T'){
     fclose(input);
     return 1;
   }
 
-  while(parse == 1){
+  while(parse == 1){//while scanf picked up a char
     parse = fscanf(input, "%c", &tp);
-    if(!isspace(tp)){
+    if(!isspace(tp)){//repeats above process
       count += parse;
     }
     if(!isupper(tp)){
@@ -42,23 +43,22 @@ int isvalid_text(char* filename){
     }
   }
 
-  if((count == 0) || count > 15000){
+  if((count == 0) || count > 15000){//maximum count is 15000
     fclose(input);
     return 1;
   }
   fclose(input);
-  return 0;
+  return 0;//if text is valid
 
   
 }
 
 int isvalid_pattern(char pattern[], int length){
-  //printf("in isvalid_pattern\n");
-  if((int)strlen(pattern) > length){
+  if((int)strlen(pattern) > length){//pattern is invalid if it's longer than text
     return 1;
   }
-  for(int i = 0; i < (int)strlen(pattern); i++){
-    if(toupper(pattern[i]) != 'A' && toupper(pattern[i]) != 'C' && toupper(pattern[i]) != 'G' && toupper(pattern[i]) != 'T'){
+  for(int i = 0; i < (int)strlen(pattern); i++){//loops through every char in pattern
+    if(toupper(pattern[i]) != 'A' && toupper(pattern[i]) != 'C' && toupper(pattern[i]) != 'G' && toupper(pattern[i]) != 'T'){//if there's an invlid char
       return 1;
     }
   }
@@ -66,18 +66,17 @@ int isvalid_pattern(char pattern[], int length){
 }
 
 char* scan_pattern(){
-  char temp;
-  char* pattern;
-  int size = 0;
-  int a = 0;
-  if(scanf("%c", &temp) == 1){
-    a = 1;
-    while(isspace(temp)){
+  char temp; //char to take scanf's chars
+  char* pattern;//pointer for scan_pattern to return
+  int size = 0;//total size of pattern
+  int end = 0; //1 means not ctrl-d (scanf coud pick up a char); 0 is otherwise 
+  if(scanf("%c", &temp) == 1){//makes sure there's a pattern for scanf
+    end = 1;
+    while(isspace(temp)){//skips over whitespaces
       scanf("%c", &temp);
     }
   }
-  if(a == 0){
-    //printf("end\n");
+  if(end == 0){//returns pattern with (char)32 '\0' to signify that there's no pattern to scan
     pattern = malloc(sizeof(char)*2);
     pattern[0] = (char)32;
     pattern[1] = '\0';
@@ -87,34 +86,26 @@ char* scan_pattern(){
     
     size++;
     
-    if(size == 1){
+    if(size == 1){//must allocate memory if it's the first char
       pattern = calloc(1, sizeof(char));
     }else{
-      pattern = realloc(pattern, sizeof(char)*size);
+      pattern = realloc(pattern, sizeof(char)*size);//increase memory allocated to include new char
     }
     pattern[size-1]=temp;
     
-  }while(scanf("%c", &temp) == 1 && !isspace(temp));
-  //printf("%d\n", size);
-  // if(pattern!=NULL){printf("notnull\n");}
-  //printf("%d\n", size);
-  if(size > 0){
+  }while(scanf("%c", &temp) == 1 && !isspace(temp));//while there's a non-whitespace char to scan
+  
+  if(size > 0){//adds on a null terminator to end of pattern
     pattern = realloc(pattern, sizeof(char)*size+1);
     pattern[size] = '\0';
-    //printf("not eof\n");
-    //printf("%lu size\n", sizeof(pattern));
     return pattern;
     }
-  //if(size == 0){
-    //printf("recursive\n");
-    //scan_pattern();
-    // }
-  //printf("%lu size\n", sizeof(pattern));
   
   return NULL;
   
 }
 
+//This was made before I read the entire hw3 doc
 /*int* find_matches(char pattern[], char text[]){
   int num_matches = 0;
   int n = (int)strlen(pattern);
@@ -150,31 +141,18 @@ char* scan_pattern(){
   }*/
 
 int pattern_match(const char t[], int tlen, const char p[], int plen, int start_at){
-  //printf("%d\n", tlen);
-  //printf("%d\n", plen);
-  for(int i = start_at; i < tlen-plen+1; i++){
+  for(int i = start_at; i < tlen-plen+1; i++){//looking for match starting at index start_at
     int match = 0;
     for(int j = 0; j < plen; j++){
-      if(toupper(p[j]) != toupper(t[i+j])){
-	  match = 1;
-	  break;
-	}
+      if(toupper(p[j]) != toupper(t[i+j])){//if it's not a match
+	match = 1;
+	break;
+      }
     }
-    //printf("here\n");
-    if(match == 0) {
-      //printf("%d\n", start_at);
+    if(match == 0) {//means match was found at index i
       return i;
     }
   }
-  /*if((match == 0) && i >= start_at) {
-      return i;
-      }*/
-  /*for(int i = 0; i < tlen; i++){
-    //printf("%c", t[i]);
-  }
-  for(int i = 0; i < plen; i++){
-    //printf("%c", p[i]);
-    }*/
       
   return -1;
 }
