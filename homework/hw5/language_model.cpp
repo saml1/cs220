@@ -17,15 +17,16 @@ using std::map;
 using std::string;
 using std::vector;
 using std::tuple;
+using std::cerr;
 
 /* Returns 0 if valid input (buildModel/main check for invalid file/invalid file list) */
 int isValid(int argc, char* argv[]){
   if((argc < 3) || (*argv[2] != 'a' && *argv[2] != 'd' && *argv[2] != 'c' && *argv[2] != 'f')){
-    cout << "Invalid command: valid options are a, d, c, and f" << endl;
+    cerr << "Invalid command: valid options are a, d, c, and f" << endl;
     return 2;
   }
   if(*argv[2] == 'f' && argc < 5){
-    cout << "Invalid argument list: f requires two additional command-line arguments" << endl;
+    cerr << "Invalid argument list: f requires two additional command-line arguments" << endl;
     return 3;
   }
   return 0;
@@ -110,7 +111,7 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
   for(vector<string>::iterator it = filenames.begin(); it != filenames.end(); ++it){
     std::ifstream tempfile(*it);
     if(!tempfile.is_open()){
-      cout << "Invalid file: " << *it << endl;
+      cerr << "Invalid file: " << *it << endl;
     }
     string word_t;
     vector<string> words;

@@ -11,13 +11,14 @@ int main(int argc, char* argv[]){
   using std::endl;
   using std::map;
   using std::tuple;
+  using std::cerr;
   
   map<std::tuple<string, string, string>, int> model = buildModel(argv);
 
   //checking if buildModel was able to open specified filename
   for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
     if(it->second < 0){
-      cout << "Invalid file list: " << argv[1] << endl;
+      cerr << "Invalid file list: " << argv[1] << endl;
       return 1;
     }
   }
