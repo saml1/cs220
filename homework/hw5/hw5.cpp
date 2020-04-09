@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
     return error;
   }
 
-  //dooperation
+  doOperation(model, argv);
 
   return 0;
 }

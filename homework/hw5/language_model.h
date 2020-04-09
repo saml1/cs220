@@ -13,7 +13,7 @@ using std::string;
 int isValid(int argc, char* argv[]);
 
 /* Calls method to do specified operation */
-void doOperation(int argc, char* argv[]);
+void doOperation(std::map<std::tuple<string, string, string>, int> model, char* argv[]);
 
 /* Returns map of trigraphs from text files mentioned in argv[1] */
 std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]);

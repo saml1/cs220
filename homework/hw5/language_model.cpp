@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include <tuple>
+#include "language_model.h"
 
 using std::string;
 using std::cin;
@@ -21,18 +22,27 @@ using std::tuple;
 int isValid(int argc, char* argv[]){
   if((argc < 3) || (*argv[2] != 'a' && *argv[2] != 'd' && *argv[2] != 'c' && *argv[2] != 'f')){
     cout << "Invalid command: valid options are a, d, c, and f" << endl;
-    return 1;
+    return 2;
   }
   if(*argv[2] == 'f' && argc < 5){
     cout << "Invalid argument list: f requires two additional command-line arguments" << endl;
-    return 2;
+    return 3;
   }
   return 0;
 }
 
 /* Calls method to do specified operation */
-void doOperation(int argc, char* argv[]){
-  //TODO: write me! (buildModel is helping)
+void doOperation(std::map<std::tuple<string, string, string>, int> model, char* argv[]){
+  if(*argv[2] == 'a'){
+    for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
+      cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+    }
+  }
+  if(*argv[2] == 'd'){
+    for(map<tuple<string, string, string>, int>::reverse_iterator it = model.rbegin(); it != model.rend(); ++it){
+      cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+    }
+  }
 }
 
 /* Returns map of trigraphs from text files mentioned in argv[1] */
@@ -61,7 +71,6 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
     string word_t;
     vector<string> words;
     while(tempfile >> word_t){//adding all words from current txt file to vector words
-      // vector<string> words;
       words.push_back(word_t);
     }
     for(int i = -2; i <(int) words.size(); i++){
@@ -97,10 +106,6 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
 	model[std::make_tuple(temp1, temp2, temp3)] += 1;
       }
     }
-  }
-
-  for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
-    //cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
   }
   
   return model;
