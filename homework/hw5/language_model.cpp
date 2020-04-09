@@ -18,7 +18,7 @@ using std::string;
 using std::vector;
 using std::tuple;
 
-/* Returns 0 if valid input (buildModel/main check for invalid file list) */
+/* Returns 0 if valid input (buildModel/main check for invalid file/invalid file list) */
 int isValid(int argc, char* argv[]){
   if((argc < 3) || (*argv[2] != 'a' && *argv[2] != 'd' && *argv[2] != 'c' && *argv[2] != 'f')){
     cout << "Invalid command: valid options are a, d, c, and f" << endl;
@@ -41,6 +41,27 @@ void doOperation(std::map<std::tuple<string, string, string>, int> model, char* 
   if(*argv[2] == 'd'){
     for(map<tuple<string, string, string>, int>::reverse_iterator it = model.rbegin(); it != model.rend(); ++it){
       cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+    }
+  }
+  if(*argv[2] == 'c'){
+    int max = -1;
+    char max_c = -1;
+    //finding max frequency
+    for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
+      if(it-> second > max){
+	max = it->second;
+      }
+    }
+    for(int i = max; i >= 0; i --){
+      map<tuple<string, string, string>, int> temp;
+      for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
+	if(it->second == i){
+	  temp[it->first] = it->second;
+	}
+      }
+      for(map<tuple<string, string, string>, int>::const_iterator it = temp.cbegin(); it != temp.cend(); ++it){
+	cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+      }
     }
   }
 }
