@@ -45,23 +45,46 @@ void doOperation(std::map<std::tuple<string, string, string>, int> model, char* 
   }
   if(*argv[2] == 'c'){
     int max = -1;
-    char max_c = -1;
+    //char max_c = -1;
     //finding max frequency
     for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
       if(it-> second > max){
 	max = it->second;
       }
     }
-    for(int i = max; i >= 0; i --){
+    for(int i = max; i >= 0; i --){//make a temp map for each frequency
       map<tuple<string, string, string>, int> temp;
       for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
 	if(it->second == i){
 	  temp[it->first] = it->second;
 	}
       }
+      //from highest to lowest frequency, output sorted temp map
       for(map<tuple<string, string, string>, int>::const_iterator it = temp.cbegin(); it != temp.cend(); ++it){
 	cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
       }
+    }
+  }
+  if(*argv[2] == 'f'){
+    bool foundMatch = false;
+    map<tuple<string, string, string>, int> temp;
+    //finding all trigrams that match and adding them to temp map
+    for(map<tuple<string, string, string>, int>::iterator it = model.begin(); it != model.end(); ++it){
+      if((std::get<0>(it->first)).compare(argv[3]) == 0  && (std::get<1>(it->first)).compare(argv[4]) == 0){
+	temp[it->first] = it->second;
+	foundMatch = true; 
+      }
+    }
+    if(foundMatch){
+      int once = 0;//making use of iterator's  automatic organization but only want to print once
+      for(map<tuple<string, string, string>, int>::const_iterator it = temp.cbegin(); it != temp.cend(); ++it){
+	if(once == 0){
+	  cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+	  once = 1;
+	}
+      }
+    }else{
+      cout << "No trigrams of the form [" << argv[3] << " " << argv[4] << " ?] appear" << endl;
     }
   }
 }
