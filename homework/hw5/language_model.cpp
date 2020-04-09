@@ -9,10 +9,24 @@
 #include <tuple>
 
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::map;
+using std::string;
+using std::vector;
+using std::tuple;
 
-/* Returns 0 if valid input, 1 if invalid input */
+/* Returns 0 if valid input (buildModel/main check for invalid file list) */
 int isValid(int argc, char* argv[]){
-  //TODO: write me! make this method do cout stuff)
+  if((argc < 3) || (*argv[2] != 'a' && *argv[2] != 'd' && *argv[2] != 'c' && *argv[2] != 'f')){
+    cout << "Invalid command: valid options are a, d, c, and f" << endl;
+    return 1;
+  }
+  if(*argv[2] == 'f' && argc < 5){
+    cout << "Invalid argument list: f requires two additional command-line arguments" << endl;
+    return 2;
+  }
   return 0;
 }
 
@@ -23,20 +37,11 @@ void doOperation(int argc, char* argv[]){
 
 /* Returns map of trigraphs from text files mentioned in argv[1] */
 std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
-  using std::cin;
-  using std::cout;
-  using std::endl;
-  using std::map;
-  using std::string;
-  using std::vector;
-  using std::tuple;
-
   //create map where key is trigraph and value is its frequency
   map<tuple<string, string, string>, int> model;
   
   std::ifstream ifile(argv[1]);
   if(!ifile.is_open()){//returns certain map if error occurs
-    cout << "Invalid file list: " << argv[1] << endl;
     model[std::make_tuple("error", "error", "error")] = -1;
     return model;
   }
@@ -81,7 +86,6 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
 	temp2 = words[i+1];
 	temp3 = "<END_1>";
       }else{
-	cout << i << endl;
 	temp1 = words[i];
 	temp2 = words[i + 1];
 	temp3 = words[i + 2];
@@ -96,7 +100,7 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
   }
 
   for(map<tuple<string, string, string>, int>::const_iterator it = model.cbegin(); it != model.cend(); ++it){
-    cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
+    //cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
   }
   
   return model;
