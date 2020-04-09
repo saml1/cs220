@@ -68,7 +68,7 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
 	temp1 = "<START_1>";
 	temp2 = "<START_2>";
 	temp3 = words[0];
-      }else if(i == 1){
+      }else if(i == -1){
 	temp1 = "<START_2>";
 	temp2 = words[0];
 	temp3 = words[1];
@@ -81,6 +81,7 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
 	temp2 = words[i+1];
 	temp3 = "<END_1>";
       }else{
+	cout << i << endl;
 	temp1 = words[i];
 	temp2 = words[i + 1];
 	temp3 = words[i + 2];
