@@ -1,0 +1,12 @@
+Sam Lipschitz
+slipsch3
+
+This program creates, and does one out of four possible operations on, a list of the frequencies of every trigram (group of three words) in the textfiles specified in the input filename list.
+
+The operations are a (outputs trigram list in ascending alphabetical order by trigram), d (outputs trigram list in descending alphabetical order by trigram) c (outputs trigram list in decreasing order of frequency), and f (outputs most frequently occcuring third word given the first two).
+
+To run the program, type:
+./hw5 input_filename.txt operation extra_arguments
+
+Valid arguments for operation are a, d, c, and f.
+Extra-arguments are only necessary for the 'f' operation (must supply first and second words)
