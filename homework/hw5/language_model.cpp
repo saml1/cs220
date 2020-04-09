@@ -77,7 +77,7 @@ void doOperation(std::map<std::tuple<string, string, string>, int> model, char* 
       }
     }
     if(foundMatch){
-      int once = 0;//making use of iterator's  automatic organization but only want to print once
+      int once = 0;//making use of iterator's automatic organization but only want to print once
       for(map<tuple<string, string, string>, int>::const_iterator it = temp.cbegin(); it != temp.cend(); ++it){
 	if(once == 0){
 	  cout << it->second << " - [" << std::get<0>(it->first) << " " << std::get<1>(it->first) << " " << std::get<2>(it->first) << "]" << endl;
@@ -112,46 +112,46 @@ std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]){
     std::ifstream tempfile(*it);
     if(!tempfile.is_open()){
       cerr << "Invalid file: " << *it << endl;
-    }
-    string word_t;
-    vector<string> words;
-    while(tempfile >> word_t){//adding all words from current txt file to vector words
-      words.push_back(word_t);
-    }
-    for(int i = -2; i <(int) words.size(); i++){
-      //temp1, temp2, and temp3 are 3 words in each trigram
-      string temp1;
-      string temp2;
-      string temp3;
-      if(i == -2){
-	temp1 = "<START_1>";
-	temp2 = "<START_2>";
-	temp3 = words[0];
-      }else if(i == -1){
-	temp1 = "<START_2>";
-	temp2 = words[0];
-	temp3 = words[1];
-      }else if(i == (int)words.size() - 1){
-	temp1 = words[i];
-	temp2 = "<END_1>";
-	temp3 = "<END_2>";
-      }else if(i == (int)words.size() - 2){
-	temp1 = words[i];
-	temp2 = words[i+1];
-	temp3 = "<END_1>";
-      }else{
-	temp1 = words[i];
-	temp2 = words[i + 1];
-	temp3 = words[i + 2];
+    }else{
+      string word_t;
+      vector<string> words;
+      while(tempfile >> word_t){//adding all words from current txt file to vector words
+	words.push_back(word_t);
       }
-      //adding trigram to model
-      if(model.map::find(std::make_tuple(temp1, temp2, temp3)) == model.end()){
-	model[std::make_tuple(temp1, temp2, temp3)] = 1;
-      }else{
-	model[std::make_tuple(temp1, temp2, temp3)] += 1;
+      for(int i = -2; i <(int) words.size(); i++){
+	//temp1, temp2, and temp3 are 3 words in each trigram
+	string temp1;
+	string temp2;
+	string temp3;
+	if(i == -2){
+	  temp1 = "<START_1>";
+	  temp2 = "<START_2>";
+	  temp3 = words[0];
+	}else if(i == -1){
+	  temp1 = "<START_2>";
+	  temp2 = words[0];
+	  temp3 = words[1];
+	}else if(i == (int)words.size() - 1){
+	  temp1 = words[i];
+	  temp2 = "<END_1>";
+	  temp3 = "<END_2>";
+	}else if(i == (int)words.size() - 2){
+	  temp1 = words[i];
+	  temp2 = words[i+1];
+	  temp3 = "<END_1>";
+	}else{
+	  temp1 = words[i];
+	  temp2 = words[i + 1];
+	  temp3 = words[i + 2];
+	}
+	//adding trigram to model
+	if(model.map::find(std::make_tuple(temp1, temp2, temp3)) == model.end()){
+	  model[std::make_tuple(temp1, temp2, temp3)] = 1;
+	}else{
+	  model[std::make_tuple(temp1, temp2, temp3)] += 1;
+	}
       }
     }
   }
-  
   return model;
 }
