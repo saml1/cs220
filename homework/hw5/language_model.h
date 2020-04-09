@@ -16,6 +16,6 @@ int isValid(int argc, char* argv[]);
 void doOperation(int argc, char* argv[]);
 
 /* Returns map of trigraphs from text files mentioned in argv[1] */
-std::map<string, int> buildModel(char* argv[]);
+std::map<std::tuple<string, string, string>, int> buildModel(char* argv[]);
 
 #endif

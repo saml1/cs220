@@ -15,6 +15,6 @@ int main(int argc, char* argv[]){
   }
 
   buildModel(argv);
-
+  //TODO later: implement error reporting stuff from buildModel
   return 0;
 }
