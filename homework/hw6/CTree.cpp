@@ -1,6 +1,9 @@
 #include "CTree.h"
 #include <iostream>
-
+#include <vector>
+#include <map>
+using std::vector;
+using std::map;
 std::ostream& operator<<(std::ostream& os, CTree& rt){
   //TODO: write me
   return os;
@@ -34,19 +37,32 @@ bool CTree:: addChild(char ch){
 
 std::string CTree::toString(){
   //TODO: write me
+  //vector<char> chars;
+  map<char, char> chars;
   CTree * cur = this;
   std:: string temp;
+  //int temp = 0;
   while(cur){
     //std::cout<<"ok"<<std::endl;
-    temp += cur-> data;
-    temp += "\n";
+    //temp += cur-> data;
+    //temp += "\n";
+    //chars.push_back(cur->data);
+    chars[cur->data] = cur->data;
     if(cur->kids != NULL){
       cur = cur->kids;
-    }else{
-      cur = NULL;
+    }else if(cur->sibs != NULL){
+	cur = cur->sibs;
       //TODO: fix method to work with everything
+      }else{
+	cur = NULL;
     }
   }
+  
+  for(map<char, char>::iterator it= chars.begin(); it != chars.end(); ++it){
+    temp += it->first;
+    temp += "\n";
+  }
+  std::cout << temp << "done" << std::endl;
   return temp;
 }
 
