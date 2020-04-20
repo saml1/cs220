@@ -1,4 +1,5 @@
 #include "CTree.h"
+#include <iostream>
 
 std::ostream& operator<<(std::ostream& os, CTree& rt){
   //TODO: write me
@@ -24,7 +25,20 @@ bool CTree:: addChild(char ch){
 
 std::string CTree::toString(){
   //TODO: write me
-  return "tt";
+  CTree * cur = this;
+  std:: string temp;
+  while(cur){
+    std::cout<<"ok"<<std::endl;
+    temp += cur-> data;
+    temp += "\n";
+    if(cur->kids != NULL){
+      cur = cur->kids;
+    }else{
+      cur = NULL;
+      //TODO: fix method to work with everything
+    }
+  }
+  return temp;
 }
 
 CTree:: ~CTree(){

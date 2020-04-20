@@ -275,7 +275,7 @@ public:
 int main(void) {
     cout << "Testing CTree" << endl;
     CTreeTest::constructorTest();
-    CTreeTest::addsTest();
+    //CTreeTest::addsTest();
     /*CTreeTest::addSimpleChildTest();
     CTreeTest::testCaretOp();
     CTreeTest::testOutputOp();
