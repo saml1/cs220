@@ -39,7 +39,9 @@ std::string CTree::toString(){
   //TODO: write me
   //vector<char> chars;
   map<char, char> chars;
-  CTree * cur = this;
+  //if(this->kids != NULL){
+    CTree * cur = this->kids;
+    //}//CTree * cur = this;
   std:: string temp;
   //int temp = 0;
   while(cur){
@@ -57,7 +59,8 @@ std::string CTree::toString(){
 	cur = NULL;
     }
   }
-  
+  temp += this->data;
+  temp += "\n";
   for(map<char, char>::iterator it= chars.begin(); it != chars.end(); ++it){
     temp += it->first;
     temp += "\n";
