@@ -16,9 +16,18 @@ CTree::CTree(char ch){//head constructor
 bool CTree:: addChild(char ch){
   if(kids == NULL){
     CTree * child = new CTree(ch);
+    child->prev = this;
     kids = child;
     return true;
   }else{
+    CTree * cur = this->kids;
+    while(cur){
+      if(cur->data == ch){
+	return false;
+      }else{
+	return cur->addChild(ch);
+      }
+    }
     return kids->addChild(ch);
   }
 }
@@ -28,7 +37,7 @@ std::string CTree::toString(){
   CTree * cur = this;
   std:: string temp;
   while(cur){
-    std::cout<<"ok"<<std::endl;
+    //std::cout<<"ok"<<std::endl;
     temp += cur-> data;
     temp += "\n";
     if(cur->kids != NULL){
