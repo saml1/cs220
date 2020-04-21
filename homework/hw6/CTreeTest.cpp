@@ -71,7 +71,9 @@ public:
     // A
     // |
     // b - c
+    //cout<<t1->toString()<<endl;
     assert(t1->addChild('c'));
+    cout<<t1->toString()<<endl;
     assert(t1->toString() == "A\nb\nc\n");
     // can't add again
     assert(!t1->addChild('c'));
@@ -276,9 +278,9 @@ int main(void) {
     cout << "Testing CTree" << endl;
     CTreeTest::constructorTest();
     CTreeTest::addsTest();
-    /*CTreeTest::addSimpleChildTest();
-    CTreeTest::testCaretOp();
-    CTreeTest::testOutputOp();
-    CTreeTest::testEqualityOp();*/
+    //CTreeTest::addSimpleChildTest();
+    //CTreeTest::testCaretOp();
+    //CTreeTest::testOutputOp();
+    //CTreeTest::testEqualityOp();
     cout << "CTree tests passed" << endl;
 }
