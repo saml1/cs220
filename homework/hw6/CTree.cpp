@@ -52,6 +52,7 @@ bool CTree:: addChild(char ch){
 	CTree* child = new CTree(ch);
 	child->sibs = cur;
 	child->prev = cur->prev;
+	//cout<<"here"<<endl;
 	if((cur->prev)->kids == cur){
 	  (cur->prev)->kids = child;
 	}else{
@@ -66,7 +67,7 @@ bool CTree:: addChild(char ch){
 }
 
 std::string CTree::toString(){
-  map<char, char> chars;
+  //map<char, char> chars;
   //CTree * cur = this->kids;
   std::string str;//string to hold all data
   str += this-> data;//adding "top letter"
@@ -78,85 +79,41 @@ std::string CTree::toString(){
     while(cur != NULL){
       str += cur->data;
       str += "\n";
+      if(cur->kids != NULL){
+	CTree* temp = cur->kids;
+	while(temp){
+	  str += temp->data;
+	  str += "\n";
+	  temp = temp->kids;
+	  cout<<"heeer"<<endl;
+	}
+      }
       cur = cur->sibs;
       //cout << "here"<< endl;
     }
   }
-  /* if(this->kids != NULL){
-    for(CTree* cur = this->kids; cur != NULL; cur = cur->kids){
+  /*if(this->sibs != NULL){
+    CTree * cur = (this->sibs);
+    while(cur!= NULL){
+      //cout << "ok" << endl;
+      //str += cur->toString();
+      //cur = cur->sibs;
       str += cur->data;
       str += "\n";
-    }
-  }
-  if(this->sibs != NULL){
-    for(CTree* cur = this->sibs; cur != NULL; cur = cur->sibs){
-      str += cur->toString();
-    }
-    }*/
-  /*int levels = 0;
-  if(this->kids == NULL){
-    std::cout<<this->data<<std::endl;
-    return str;
-  }
-  for(CTree * cur = this->kids; cur != NULL; cur = cur->sibs){
-    str+=cur->data;
-    str += "\n";
-    while(cur->kids != NULL){
-      cur = cur->kids;
-    }
-    }*/
-  //std::cout<<str<<std::endl;
-  return str;
-  /*while(cur){
-    str+=cur->data + "\n";
-    if(cur->kids){
-      cur = cur->kids;
-      levels += 1;
-    }else{
-      for(int i = 0; i < levels; i++){
-	cur = cur->
+      CTree * temp = cur->sibs;
+      while(temp){
+	str += temp->data;
+	str += "\n";
+	temp = temp->sibs;
       }
+      cur = cur->sibs;
     }
-    }*/
-}
-/*std::string CTree::toString(){
-  //TODO: write me
-  //vector<char> chars;
-  map<char, char> chars;
-  //if(this->kids != NULL){
-  //CTree * cur = this->kids;
-    //}//CTree * cur = this;
-  std:: string temp;
-  //int temp = 0;
-  for(CTree* cur = ){
-    //std::cout<<"ok"<<std::endl;
-    //temp += cur-> data;
-    //temp += "\n";
-    //chars.push_back(cur->data);
-    chars[cur->data] = cur->data;
-    if(cur->kids != NULL){
-      cur = cur->kids;
-    }else if(cur->sibs != NULL){
-	cur = cur->sibs;
-      //TODO: fix method to work with everything
-      }else{
-	cur = NULL;
-    }
-  }
-  temp += this->data;
-  temp += "\n";
-  for(map<char, char>::iterator it= chars.begin(); it != chars.end(); ++it){
-    temp += it->first;
-    temp += "\n";
-  }
-  cur = this->sibs;
-  while(cur){
-    temp += cur->toString();
-    cur = cur->sibs;
-  }
-  std::cout << temp << "done" << std::endl;
-  return temp;
   }*/
+  if(this->sibs){
+    str += (this->sibs)->toString();
+  }
+  return str;
+}
 
 CTree:: ~CTree(){
   //TODO: this could be wrong
@@ -177,36 +134,93 @@ CTree& CTree::operator^(CTree& rt){
   this->addChild(&rt);
   return *this;
 }
-
+/*
 bool CTree:: addChild(CTree *root){
   if(root->prev != NULL || root->sibs != NULL){
     return false;
-  }
+  }//root must not have prev or sibs
   CTree* cur = this->kids;
-  while(cur){
+  while(cur){//making sure that no data matches
     if(cur == root){
       return false;
     }else{
       cur = cur->sibs;
     }
   }
-  root->prev = this;
-  if(kids == NULL){
-    kids = root;
-    return true;
-  }else{
+  if(this->addChild(root->data)){
     cur = this->kids;
-    while(cur){
-      if(cur->sibs == NULL){
-	cur->sibs = root;
-	root->sibs = cur;
-	return true;
+    while(cur->data != root->data){
+      cur = cur->sibs;
+    }
+    if(cur->sibs == NULL){//then will always be successful
+      cur->sibs = root->kids;
+    }else if((cur->sibs)->data < root->data){
+      CTree * temp = cur->sibs;
+      if((temp->sibs)->data > root->data && (temp->prev)->data < root->data){
+	cur->kids = root->kids;
       }else{
-	cur = cur->sibs;
+	temp = temp->sibs;
       }
     }
+    return true;
+  }else{
+    return false;
   }
+  
   return false;
   //TODO: fix me
 }
+*/
 
+bool CTree:: addChild(CTree *root){
+  if(root->prev != NULL || root->sibs != NULL){
+    return false;
+  }//root must not have prev or sibs 
+  CTree* cur = this->kids;
+  cout << "here3" << endl;
+  while(cur){
+    cout << "here4" << endl;
+    if(cur == root || cur->data == root->data){//making sure no doubles
+      return false;
+    }else{
+      cur = cur->sibs;
+    }
+  }
+  if(this->kids == NULL){
+    this->kids = root;
+    return true;
+  }else if((this->kids)->data < root->data){//root will go after this->kids
+    cur = (this->kids)->sibs;
+    cout << "here2" << endl;
+    if(cur == NULL || cur->data > root->data){
+      cout << "here1" << endl;
+      root->sibs = cur;
+      root->prev = this->kids;
+      (this->kids)->sibs = root;
+      if(cur != NULL){
+	cur->prev = root;
+      }
+      return true;
+    }
+  }
+  else{//root goes before
+    cout << "here" << endl;
+    /*if(!addChild(root->data)){
+      return false;
+    }
+    CTree * target = this->kids;
+    while(target){
+      if(target->data == root->data){
+	break;
+      }
+    }
+    target->kids = root->kids;*/
+    root->sibs = this->kids;
+    root->prev = this;
+    (this->kids)->prev = root;
+    this->kids = root;
+    return true;
+  }
+  //cout << "no" << endl;
+  return false;
+}
