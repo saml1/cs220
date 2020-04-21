@@ -58,6 +58,7 @@ bool CTree:: addChild(char ch){
 	  (cur->prev)->sibs = child;
 	}
 	cur->prev = child;//TODO: check for working with all
+	return true;
       }
     }
     return kids->addChild(ch);
