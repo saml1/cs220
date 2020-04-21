@@ -75,6 +75,18 @@ std::string CTree::toString(){
   if(this->kids != NULL){
     str += (this->kids)->data;
     str += "\n";
+    CTree * depth = (this->kids)->kids;
+    while(depth){
+      str += depth->data;
+      str += "\n";
+      CTree * traversal = depth->sibs;
+      while(traversal){
+	str += traversal->data;
+	str += "\n";
+	traversal = traversal->sibs;
+      }
+      depth = depth->kids;
+    }
     CTree * cur = (this->kids)->sibs;
     while(cur != NULL){
       str += cur->data;
