@@ -76,7 +76,8 @@ std::string CTree::toString(){
     str += (this->kids)->data;
     str += "\n";
     CTree * depth = (this->kids)->kids;
-    while(depth){
+    if(depth){str += depth->toString();}
+    /*while(depth){
       str += depth->data;
       str += "\n";
       CTree * traversal = depth->sibs;
@@ -86,19 +87,20 @@ std::string CTree::toString(){
 	traversal = traversal->sibs;
       }
       depth = depth->kids;
-    }
+      }*/
     CTree * cur = (this->kids)->sibs;
     while(cur != NULL){
       str += cur->data;
       str += "\n";
       if(cur->kids != NULL){
 	CTree* temp = cur->kids;
-	while(temp){
+	if(temp){str += temp->toString();}
+	/*while(temp){
 	  str += temp->data;
 	  str += "\n";
 	  temp = temp->kids;
 	  cout<<"heeer"<<endl;
-	}
+	  }*/
       }
       cur = cur->sibs;
       //cout << "here"<< endl;
@@ -189,9 +191,9 @@ bool CTree:: addChild(CTree *root){
     return false;
   }//root must not have prev or sibs 
   CTree* cur = this->kids;
-  cout << "here3" << endl;
+  //cout << "here3" << endl;
   while(cur){
-    cout << "here4" << endl;
+    //cout << "here4" << endl;
     if(cur == root || cur->data == root->data){//making sure no doubles
       return false;
     }else{
@@ -203,9 +205,9 @@ bool CTree:: addChild(CTree *root){
     return true;
   }else if((this->kids)->data < root->data){//root will go after this->kids
     cur = (this->kids)->sibs;
-    cout << "here2" << endl;
+    //cout << "here2" << endl;
     if(cur == NULL || cur->data > root->data){
-      cout << "here1" << endl;
+      //cout << "here1" << endl;
       root->sibs = cur;
       root->prev = this->kids;
       (this->kids)->sibs = root;
@@ -216,7 +218,7 @@ bool CTree:: addChild(CTree *root){
     }
   }
   else{//root goes before
-    cout << "here" << endl;
+    //cout << "here" << endl;
     /*if(!addChild(root->data)){
       return false;
     }
