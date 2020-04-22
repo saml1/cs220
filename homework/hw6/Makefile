@@ -2,7 +2,7 @@ CONSERVATIVE_FLAGS = -std=c++11 -Wall -Wextra -pedantic
 DEBUGGING_FLAGS = -g -O0
 CFLAGS = $(CONSERVATIVE_FLAGS) $(DEBUGGING_FLAGS)
 
-CTreeTest: CTree.o CTreeTest.o
+cTreeTest: CTree.o CTreeTest.o
 	g++ -o CTreetest CTree.o CTreeTest.o
 
 CTreeTest.o: CTreeTest.cpp CTree.h

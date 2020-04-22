@@ -1,0 +1,8 @@
+Sam Lipschitz
+slipsch3
+
+The addCHild(char ch) method first checks if the implicit parameter's kids field is NULL, since if it is then it will always be able to add a child.  If it isn't null, it compares the char ch to the kid's data value to determine if/where the new child should be added.
+
+The toString() method has two recursive elements, one for getting the data from all of the children and children's children, etc, and one to process the data of all of the siblings.
+
+The addChild(CTree * root) method first makes sure that the root is valid.  The logic for determining where the child should be placed is essentially the same as the other addChild method, but making sure that all of the pointer fields of child and the CTree*'s before and after the child was a little more complex.  

@@ -1,0 +1,395 @@
+commit 5ea408f2d1f9f6a325bf614f55b713c90a69e060
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 21 21:15:52 2020 +0000
+
+    passed addtest! (replaced extra while loops with recursion)
+
+commit 2925b553794b68498e842a49700007dc56dc2084
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 21 21:06:27 2020 +0000
+
+    somewhat fixed tostring (added another while loop but may need recursion)
+
+commit 3666402e67096086cb1f51e0e3c63a64d55d553b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 21 20:46:36 2020 +0000
+
+    got toString to work with t1
+
+commit e945d120a1d44221fd0b641f49b429768652be27
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 21 14:29:51 2020 -0400
+
+    working up to assert on 151
+
+commit c35f10822f8bd524715b45bb63092f4ea81e205d
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 21 13:37:39 2020 -0400
+
+    fixed some bad functions but now only works up to assert on 88
+
+commit dca4dca4187b0ca1eaa54543c0ccccdcffc9f092
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Apr 20 16:29:52 2020 -0400
+
+    working up to assertion on 149
+
+commit 613886baa05d584d5f66fff68e3c9ffc24c71736
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Apr 20 16:21:06 2020 -0400
+
+    working up to assertion on line 116
+
+commit 3a9e4c5bb1e74f09deab9f75f8af4b1976e70d62
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Apr 20 15:40:13 2020 -0400
+
+    wrote addChild(ch) to pass asserts up to line 86
+
+commit 1dd83c941fc97e8b87a1f582085c32fa00a3fcd6
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Apr 20 15:23:38 2020 -0400
+
+    passed constructor test
+
+commit 684f684a3ada29285e8834ab5a83c50f5a56ac78
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Apr 20 15:03:34 2020 -0400
+
+    working makefille and compiles now
+
+commit fdd3406a668e40fe5a1d76a4538d722f2de40547
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 14 16:57:16 2020 -0400
+
+    just created/added files
+
+commit bbc20faffaa1d3d7d70977970039ce4ceafa7cbd
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 14 16:11:42 2020 -0400
+
+    finished ex12-1
+
+commit 35361a2b5f694ffe457cd1a119e868ca8e2f13b2
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sun Apr 12 16:07:56 2020 -0400
+
+    finished ex11-1
+
+commit eeeeb61db69ea0e6ba47063216cb9d98eccd51e2
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 13:44:00 2020 -0400
+
+    added README and gitlog
+
+commit e388de9e9506bdf83efc5d7eaf5a5013ceeee174
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 13:25:36 2020 -0400
+
+    fixed bug with invalid file
+
+commit 2e118df85a49d6eca09e665c3ea96b449091ad9f
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 13:13:46 2020 -0400
+
+    switched to using std::cerr for printing errors
+
+commit 9370a3322008904cc4be061388e0147542a89c3a
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 13:05:00 2020 -0400
+
+    wrote doOperation for 'f'
+
+commit 817aa9da6b7bf4351fc5463d981bc6b7341ea2da
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 12:10:01 2020 -0400
+
+    wrote doOperation for 'c'
+
+commit ac10813318a094cae034ff3e2792882fadbde874
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 11:26:49 2020 -0400
+
+    fixed bug where program would add extra 'error' trigram
+
+commit 739f79248367ba1c1f64f4c7c512d13632fe2918
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 11:09:53 2020 -0400
+
+    wrote doOperation for 'a' and 'd' operations
+
+commit 792a6f6a275866c37c8161a5c78ef4479fceb0d1
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 10:49:40 2020 -0400
+
+    wrote isValid
+
+commit 41cc1346915a22a349af0affaf2793bbdfe6053e
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 10:20:29 2020 -0400
+
+    fixed typo in buildModel
+
+commit 9e46fe7d1bc835594a2593b7c1718ed0edb677f4
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 10:12:25 2020 -0400
+
+    finished buildModel
+
+commit a8ecd2b3a80cef55be0f148fe6d3b5095e2192df
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Thu Apr 9 09:18:20 2020 -0400
+
+    started working on buildModel function
+
+commit 4de697b2babfeb1e5c9c0d841ee3c22cea2cbb3b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 7 11:52:18 2020 -0400
+
+    added some function declarations
+
+commit 7a1fea0a783920ee76766ea15a155b0a8a1f4b55
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 7 11:14:24 2020 -0400
+
+    finished Makefile, barely started hw5.cpp
+
+commit b2dc695012fcfb61aeb013d220ccd4a47a1d2d5c
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Apr 7 10:52:21 2020 -0400
+
+    created both language_model files and hw5.cpp
+
+commit 88d7346f1468ac747da2f5a93a64699a941e51dc
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Mar 3 17:50:58 2020 -0500
+
+    finished ex5-1
+
+commit 0633f7ff74ea8ef695c7dec88a5b2b3beb0377ae
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Wed Feb 26 09:19:49 2020 -0500
+
+    removed TODO comment
+
+commit 051102ad82873d0f5c2763257c99e9291ae9e374
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Wed Feb 26 09:18:56 2020 -0500
+
+    added comments and clarifying printfs
+
+commit f427df2ef8e22802e6498276bca941939e9adb6f
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Wed Feb 26 09:17:51 2020 -0500
+
+    removed commented out code and added comments throughout
+
+commit fca00239b4ae60093464f0d05d16cfe8070fe3f7
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 17:00:40 2020 -0500
+
+    now hw3.c will give no output if user types in no input before ctrl-d
+
+commit 785bb93c8ba6f20a43a6080a6285587d8f8f5793
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 13:26:43 2020 -0500
+
+    fixed last pattern not being outputted on gradescope/all valgrind errors
+
+commit 904d94b5ec5cc46562b757faa5e79be54497d0d3
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 12:01:00 2020 -0500
+
+    fixed pattern match to work when pattern is the last elements of text
+
+commit 75a371bc045323ceb85337aa0af7d25a84aab65a
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 11:50:12 2020 -0500
+
+    fixed bug where pattern_match would skip matches at 0th element
+
+commit 11a14abccab16fc9bf8ffd5e065170847170647b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 11:49:25 2020 -0500
+
+    syntax was wrong for Makefile
+
+commit d10bd30ec41fe1f3095e8f8a5eb64c6c4085871a
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 10:43:23 2020 -0500
+
+    fixed valgrind error with invalid pattern
+
+commit 61da910b106dd13f850b4bfa0cbbad58fa15c4a3
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Tue Feb 25 10:38:31 2020 -0500
+
+    now program exists when invalid pattern is read
+
+commit e6f9a768eeada7fc55aed3fe75cd9a43704faeb1
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 24 18:48:07 2020 -0500
+
+    fixed issue with multiple spaces b/w patterns
+
+commit 2216825fcff876c51327c2bd05d6742200771601
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 24 17:20:22 2020 -0500
+
+    got hw3.c working almost completely- just need to make it ignore spaces
+
+commit a4f4575e6023c77f4ef4525373088f805326b593
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 24 15:17:42 2020 -0500
+
+    realized i have to write find_matches in a different way so did that (now pattern_match)
+
+commit 669a85a25ee0e9e23cd07136ac0059f19433e697
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 24 14:02:54 2020 -0500
+
+    added toupper to both pattern and text
+
+commit 0779fbd9a485fda2e2522a0c4b67d73e26383a34
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 24 12:37:08 2020 -0500
+
+    fixed find_matches (hopefully)- forgot to do toupper on pattern when comparing chars
+
+commit 4e0a5c8204aaeca043095ac2f46bb06392425b08
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sun Feb 23 19:15:53 2020 -0500
+
+    started writing hw3.c, realized there are some errors in at least find_matches
+
+commit ff0e3e2c7876dc40957f3e1c369a541b57db558e
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sun Feb 23 18:26:20 2020 -0500
+
+    modified find_matches to add a -1 at the end of returned int* to indicate the end of the the array
+
+commit 9ad3da249b85b42f5387b6544b27f6c7de554ef8
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sun Feb 23 17:00:16 2020 -0500
+
+    completed find_matches
+
+commit 8f1355f1fc26d1480be7b4186df1f4ba71080026
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sun Feb 23 14:47:24 2020 -0500
+
+    completed scan_pattern
+
+commit 4cbc686dd8e5cb69e14aa255dafdb4502551bc8e
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 18:18:12 2020 -0500
+
+    fclosed files so no more errors from valgrind
+
+commit ead78ff1e18adce62d9014f72ab9a5af4b57ca81
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 13:41:49 2020 -0500
+
+    added working isvalid_pattern and modified test_dnasearch.c to use assert to test functions
+
+commit c2ac3720feec64c45b227608c1c95850d3622214
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 12:44:55 2020 -0500
+
+    modified test_dnasearch.c to take no input
+
+commit ac9df4c74965f7af93c6fb8c71b011ece357dbe8
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 12:29:03 2020 -0500
+
+    added Makefile and working isvalid_text
+
+commit 715a516ed33fce61aa855fa2358d5f983944803b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 11:25:07 2020 -0500
+
+    added Makefile with w3 target
+
+commit 64fae0473b112577e5c48ead6c86ca9269641056
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 22 10:52:00 2020 -0500
+
+    created files with headers, etc
+
+commit 2b5798f0226d2a07d5542c4f33188a1d5bf53678
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Feb 14 16:11:52 2020 -0500
+
+    completed in-class ex for 2/12 on 2/12 but forgot to add it
+
+commit a344231c16fe947424fc86e7a33e4bc912be1264
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Feb 14 16:10:10 2020 -0500
+
+    completed ex3-2
+
+commit 44b5133d67c15bdd9684845e739b5216e8ecf087
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 10 15:07:43 2020 -0500
+
+    added git log
+
+commit fa9815dceef61a71545c38bd84fdc542e7e4ec7b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 10 14:51:33 2020 -0500
+
+    added correct return values
+
+commit 6ee3c08a44befe222c79178f0ff42f9307af6e73
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Mon Feb 10 14:28:58 2020 -0500
+
+    completed ex 3-1
+
+commit e339db6922b0ca71e9acc9c82565dc4e50eb0c20
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 12:09:56 2020 -0500
+
+    think everything's working- double check later
+
+commit bee12b23e4a056dd7d63614354d6ad03b173ca7b
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 12:01:27 2020 -0500
+
+    fixed 2*2**
+
+commit a73cd76dd97e9f73f5925d4ce36db3c9e6234c66
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 8 11:47:47 2020 -0500
+
+    math works but doesn't terminate on its own and doesn't register 2*2*2** etc as invalid
+
+commit 6f95390dbda8b6c8adddc2afcb2b50b99907c674
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Feb 7 14:29:53 2020 -0500
+
+    completed ex2-2
+
+commit a50e1d11e64053efbec478d37ed523a8225b2af6
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Wed Feb 5 15:39:32 2020 -0500
+
+    ex2-1 gpa working version
+
+commit ac7cd13183085d1b774ad0c06e6d83d2e97f5150
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Sat Feb 1 14:38:17 2020 -0500
+
+    Part 1 of hw0
+
+commit 216ed44fb14689acfc8524971bb05d035a6ca8e6
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Jan 31 13:10:30 2020 -0500
+
+    updated README
+
+commit d24bf7b9569f8da2f1adb0dab02e420aaaebfae0
+Author: Sam Lipschitz <slipsch3@jhu.edu>
+Date:   Fri Jan 31 13:07:54 2020 -0500
+
+    created README
